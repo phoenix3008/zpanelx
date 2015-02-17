@@ -201,7 +201,7 @@ apt-get -y install sudo wget vim make zip unzip git debconf-utils at
 # We now clone the ZPX software from GitHub
 echo "Downloading ZPanel, Please wait, this may take several minutes, the installer will continue after this is complete!"
 git clone https://github.com/phoenix3008/zpanelx.git
-git checkout ubuntu_14.10
+git checkout master
 cd zpanelx/
 mkdir ../zp_install_cache/
 git checkout-index -a -f --prefix=../zp_install_cache/
