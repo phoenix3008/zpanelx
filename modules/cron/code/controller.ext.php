@@ -184,7 +184,7 @@ class module_controller extends ctrl_module
         $retval = FALSE;
         //Try to create the cron file if it doesnt exist...
         if (!file_exists(ctrl_options::GetSystemOption('cron_file'))) {
-            fs_filehandler::UpdateFile(ctrl_options::GetSystemOption('cron_file'), 0644, "");
+            fs_filehandler::UpdateFile(ctrl_options::GetSystemOption('cron_file'), 0600, "");
         }
         $currentuser = ctrl_users::GetUserDetail();
         // Check to make sure the cron is not blank before we go any further...
@@ -263,10 +263,10 @@ class module_controller extends ctrl_module
                 }
             }
 
-            if (fs_filehandler::UpdateFile(ctrl_options::GetSystemOption('cron_file'), 0644, $line)) {
+            if (fs_filehandler::UpdateFile(ctrl_options::GetSystemOption('cron_file'), 0600, $line)) {
                 if (sys_versions::ShowOSPlatformVersion() != "Windows") {
                     $returnValue = ctrl_system::systemCommand(
-                                    ctrl_options::GetSystemOption('zsudo'), array(
+                                    " ", array(
                                 ctrl_options::GetSystemOption('cron_reload_command'),
                                 ctrl_options::GetSystemOption('cron_reload_flag'),
                                 ctrl_options::GetSystemOption('cron_reload_user'),
@@ -297,10 +297,10 @@ class module_controller extends ctrl_module
             $line .= "# DO NOT MANUALLY REMOVE ANY OF THE CRON ENTRIES FROM THIS FILE, USE ZPANEL      " . fs_filehandler::NewLine();
             $line .= "# INSTEAD! THE ABOVE ENTRIES ARE USED FOR ZPANEL TASKS, DO NOT REMOVE THEM!      " . fs_filehandler::NewLine();
             $line .= "#################################################################################" . fs_filehandler::NewLine();
-            if (fs_filehandler::UpdateFile(ctrl_options::GetSystemOption('cron_file'), 0644, $line)) {
+            if (fs_filehandler::UpdateFile(ctrl_options::GetSystemOption('cron_file'), 0600, $line)) {
                 if (sys_versions::ShowOSPlatformVersion() != "Windows") {
                     $returnValue = ctrl_system::systemCommand(
-                                    ctrl_options::GetSystemOption('zsudo'), array(
+                                    " ", array(
                                 ctrl_options::GetSystemOption('cron_reload_command'),
                                 ctrl_options::GetSystemOption('cron_reload_flag'),
                                 ctrl_options::GetSystemOption('cron_reload_user'),
