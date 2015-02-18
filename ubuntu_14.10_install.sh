@@ -435,7 +435,8 @@ echo -e "# inside your web browser.                                   #" &>/dev/
 echo -e "#                                                            #" &>/dev/tty
 echo -e "##############################################################" &>/dev/tty
 echo -e "" &>/dev/tty
-
+echo -e "Please change postfix settings!" &>/dev/tty
+echo -e "" &>/dev/tty
 # We now request that the user restarts their server...
 read -e -p "Restart your server now to complete the install (y/n)? " rsn
 while true; do
