@@ -314,7 +314,7 @@ function WriteVhostConfigFile()
                 // Get Package openbasedir and suhosin enabled options
                 if ( ctrl_options::GetSystemOption( 'use_openbase' ) == "true" ) {
                     if ( $rowvhost[ 'vh_obasedir_in' ] <> 0 ) {
-                        $line .= "php_admin_value open_basedir \"" . ctrl_options::GetSystemOption( 'hosted_dir' ) . $vhostuser[ 'username' ] . "/public_html" . $rowvhost[ 'vh_directory_vc' ] . ctrl_options::GetSystemOption( 'openbase_seperator' ) . ctrl_options::GetSystemOption( 'openbase_temp' ) . "\"" . fs_filehandler::NewLine();
+                        $line .= "php_admin_value open_basedir \"" . ctrl_options::GetSystemOption( 'hosted_dir' ) . $vhostuser[ 'username' ] . "/public_html" . $rowvhost[ 'vh_directory_vc' ] ."/..". ctrl_options::GetSystemOption( 'openbase_seperator' ) . ctrl_options::GetSystemOption( 'openbase_temp' ) . "\"" . fs_filehandler::NewLine();
                     }
                 }
                 if ( ctrl_options::GetSystemOption( 'use_suhosin' ) == "true" ) {
@@ -448,7 +448,7 @@ function WriteVhostConfigFile()
             echo "Apache reload" . ((0 === $returnValue ) ? "suceeded" : "failed") . "." . fs_filehandler::NewLine();
         }
         else {
-            
+
             $command = ctrl_options::GetSystemOption( 'zsudo' );
             $args = array(
                 "service",
@@ -460,7 +460,7 @@ function WriteVhostConfigFile()
             echo "Apache reload " . ((0 === $returnValue ) ? "suceeded" : "failed") . "." . fs_filehandler::NewLine();
         }
 
-        
+
     }
     else {
         return false;
